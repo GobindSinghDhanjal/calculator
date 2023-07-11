@@ -55,8 +55,8 @@ export default function Home() {
       <br />
 
       <Button btnClick={btnClick} onAllClear={onAllClear} value={"AC"} />
-      <Button btnClick={btnClick} value={"%"} />
       <Button btnClick={btnClick} onClear={onClear} value={"C"} />
+      <Button btnClick={btnClick} value={"%"} />
       <Button btnClick={btnClick} value={"/"} />
 
       <br />
