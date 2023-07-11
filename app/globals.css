@@ -155,8 +155,12 @@ input {
   .toggle{
     width: 82px;
   }
+  .row{
+    margin-top: 5px;
+  }
   .input{
     width: 265px;
+    margin-bottom: 10px;
   }
   .buttons {
     text-align: center;
