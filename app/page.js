@@ -51,7 +51,7 @@ export default function Home() {
       const result = eval(sanitizedExpression);
       const numberLength = result.toString().length;
       if (numberLength > 10) {
-        setStr(result.toFixed(10));
+        setStr(parseFloat(result.toFixed(10)));
       } else {
         setStr(result);
       }
