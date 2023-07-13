@@ -6,6 +6,7 @@ import { message } from "antd";
 
 export default function Home() {
   const [str, setStr] = useState("");
+  const [flag, setFlag] = useState(false);
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -18,16 +19,36 @@ export default function Home() {
   };
 
   function btnClick(val) {
-    if (str.length < 15) {
-      setStr(str + val);
+    if (!flag) {
+      if (str.toString().length < 15) {
+        setStr(str.toString() + val.toString());
+      } else {
+        error();
+      }
     } else {
-      error();
+      setFlag(false);
+      if (
+        val === "+" ||
+        val === "-" ||
+        val === "*" ||
+        val === "/" ||
+        val === "%"
+      ) {
+        setStr(str.toString() + val);
+      } else {
+        setStr(val.toString());
+      }
     }
   }
 
   function onEqual() {
     try {
-      const result = eval(str);
+      const expression = str;
+      const sanitizedExpression = expression.replace(
+        /(^|[^0-9])0+([0-9]+)/g,
+        "$1$2"
+      );
+      const result = eval(sanitizedExpression);
       const numberLength = result.toString().length;
       if (numberLength > 10) {
         setStr(result.toFixed(10));
@@ -37,6 +58,7 @@ export default function Home() {
     } catch (error) {
       setStr("ERROR");
     }
+    setFlag(true);
   }
 
   function onClear() {

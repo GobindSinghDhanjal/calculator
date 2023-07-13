@@ -33,7 +33,6 @@ export const Button = ({
 
   return (
     <div className="toggle">
-     <audio ref={audioRef} src="/keypress2.mp3" />
       <input onClick={onBtnClick} value={value} type="checkbox" />
       {value == "=" ? (
         <span className="equal-btn button"></span>
